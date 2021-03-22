@@ -19,13 +19,13 @@ export default function Alert({
   if (collapse && !show) {
     css += " hidden";
   } else if (collapse) {
-    css += " flex";
+    css += " flex items-start";
   }
   return (
     <div className={css}>
       {collapse ? <span className="flex-1">{children}</span> : children}
       {collapse ? (
-        <button type="button" onClick={() => setShow(false)}>
+        <button type="button" onClick={() => setShow(false)} className="px-1">
           <FontAwesomeIcon icon={faTimes} />
         </button>
       ) : null}

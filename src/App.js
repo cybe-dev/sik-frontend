@@ -3,6 +3,7 @@ import PrivateRoute from "./components/private-route";
 import AlertPages from "./pages/alert-pages";
 import Dashboard from "./pages/dashboard";
 import Login from "./pages/login";
+import ModalPages from "./pages/modal-pages";
 import WebProvider from "./web-context";
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <PrivateRoute path="/modal">
+            <ModalPages />
+          </PrivateRoute>
           <PrivateRoute path="/alert">
             <AlertPages />
           </PrivateRoute>

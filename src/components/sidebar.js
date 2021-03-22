@@ -76,9 +76,9 @@ export default function Sidebar() {
             expanded={isExpand}
           />
           <SidebarList
-            label="Menu 2"
+            label="Modal"
             icon={faAddressCard}
-            path="/menu-2"
+            path="/modal"
             expanded={isExpand}
           />
         </ul>

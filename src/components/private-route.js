@@ -1,10 +1,16 @@
-import { Redirect, Route } from "react-router";
+import { useEffect } from "react";
+import { Redirect, Route, useLocation } from "react-router";
 import { useWeb } from "../web-context";
 import ContentWrapper from "./content-wrapper";
 import Header from "./header";
 
 export default function PrivateRoute({ path, children, ...props }) {
   const webContext = useWeb();
+  const location = useLocation();
+  useEffect(() => {
+    webContext.dispatch({ type: "sidebarExpanded", value: true });
+    window.scrollTo(0, 0);
+  }, [location]);
   return (
     <Route
       path={path}
