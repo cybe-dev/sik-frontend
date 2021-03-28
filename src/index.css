@@ -21,3 +21,79 @@
 .roboto {
   font-family: "Roboto", sans-serif;
 }
+
+.loader-big,
+.loader-big:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+
+.loader-small,
+.loader-small:after {
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.loader-big,
+.loader-small {
+  margin: 0;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-right: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1.1em solid rgba(0, 0, 0, 0.2);
+  border-left: 1.1em solid #555;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+
+.loader-small {
+  border-top: 0.2rem solid rgba(0, 0, 0, 0.2);
+  border-right: 0.2rem solid rgba(0, 0, 0, 0.2);
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.2);
+  border-left: 0.2rem solid #555;
+}
+
+.loader-white {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-left-color: #fff;
+}
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.react-select__control {
+  @apply border;
+  @apply border-gray-300;
+  @apply block;
+  border-radius: 0 !important;
+  @apply w-full;
+  @apply mt-1;
+  @apply py-1;
+}

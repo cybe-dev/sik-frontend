@@ -1,14 +1,18 @@
 import {
-  faAddressCard,
-  faBell,
+  faArchive,
+  faArrowDown,
+  faArrowUp,
   faTimes,
   faTv,
+  faDollarSign,
+  faPrint,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useWeb } from "../web-context";
 import SidebarList from "./sidebar-list";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import { SidebarListMaster } from "./sidebar-list-master";
 
 export default function Sidebar() {
   const webContext = useWeb();
@@ -45,12 +49,22 @@ export default function Sidebar() {
         className="h-screen"
         options={{ scrollbars: { autoHide: "scroll" } }}
       >
-        <div className="flex montserrat font-bold h-16 items-center justify-between p-5 shadow-md">
-          <span className={isExpand ? "hidden lg:block" : "block lg:hidden"}>
-            NS-Admin
+        <div className="flex montserrat font-bold h-16 items-center justify-center justify-between p-5 shadow-md">
+          <span
+            className={
+              isExpand ? "hidden text-xs lg:block" : "hidden text-xs lg:hidden"
+            }
+          >
+            SISTEM INFORMASI KEUANGAN
           </span>
-          <span className={isExpand ? "block lg:hidden" : "hidden lg:block"}>
-            NSA
+          <span
+            className={
+              isExpand
+                ? "block lg:hidden w-full lg:text-center"
+                : "block lg:block w-full lg:text-center"
+            }
+          >
+            SIK
           </span>
           <button
             className="text-white rounded-none w-8 h-8 flex justify-center items-center text-lg lg:hidden"
@@ -63,6 +77,7 @@ export default function Sidebar() {
           </button>
         </div>
         <ul className="my-5">
+          <SidebarListMaster expanded={isExpand}>Utama</SidebarListMaster>
           <SidebarList
             label="Dashboard"
             icon={faTv}
@@ -70,15 +85,35 @@ export default function Sidebar() {
             expanded={isExpand}
           />
           <SidebarList
-            label="Alert"
-            icon={faBell}
-            path="/alert"
+            label="Klasifikasi"
+            icon={faArchive}
+            path="/classification"
+            expanded={isExpand}
+          />
+
+          <SidebarListMaster expanded={isExpand}>Transaksi</SidebarListMaster>
+          <SidebarList
+            label="Uang Keluar"
+            icon={faArrowUp}
+            path="/outcome"
             expanded={isExpand}
           />
           <SidebarList
-            label="Modal"
-            icon={faAddressCard}
-            path="/modal"
+            label="Uang Masuk"
+            icon={faArrowDown}
+            path="/income"
+            expanded={isExpand}
+          />
+          <SidebarList
+            label="Saldo Per Bulan"
+            icon={faDollarSign}
+            path="/monthly-balance"
+            expanded={isExpand}
+          />
+          <SidebarList
+            label="Cetak Laporan"
+            icon={faPrint}
+            path="/print-report"
             expanded={isExpand}
           />
         </ul>

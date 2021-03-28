@@ -1,4 +1,12 @@
-import { createContext, useContext, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+import { useCookies } from "react-cookie";
+import { service } from "./service";
 
 const WebContext = createContext();
 
@@ -37,8 +45,39 @@ export default function WebProvider({ children }) {
     sidebarExpanded: true,
     titlePage: "Dashboard",
   });
+  const [cookies, setCookies, removeCookies] = useCookies();
+  const [loading, setLoading] = useState(true);
+
+  const login = (token) => {
+    setCookies("token", token, {
+      path: "/",
+      maxAge: 60 * 60 * 24,
+    });
+    service.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    dispatch({ type: "auth", value: true });
+  };
+
+  const logout = () => {
+    removeCookies("token", {
+      path: "/",
+    });
+    service.defaults.headers.common["Authorization"] = undefined;
+    dispatch({ type: "auth", value: false });
+  };
+
+  useEffect(() => {
+    if (cookies.token) {
+      login(cookies.token);
+    }
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return null;
+  }
+
   return (
-    <WebContext.Provider value={{ state, dispatch }}>
+    <WebContext.Provider value={{ state, dispatch, login, logout }}>
       {children}
     </WebContext.Provider>
   );

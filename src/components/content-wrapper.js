@@ -6,8 +6,8 @@ export default function ContentWrapper({ children }) {
     <div
       className={
         state.sidebarExpanded
-          ? "lg:ml-56 p-5 transition-all duration-500"
-          : "lg:ml-20 p-5 transition-all duration-500"
+          ? "lg:ml-56 p-5 transition-all duration-500 flex-1 flex flex-col"
+          : "lg:ml-20 p-5 transition-all duration-500 flex-1 flex flex-col"
       }
     >
       {children}
