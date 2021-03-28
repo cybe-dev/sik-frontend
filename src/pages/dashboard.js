@@ -95,6 +95,15 @@ export default function Dashboard() {
       mounted.current = false;
     };
   }, []);
+
+  if (loading) {
+    return (
+      <div className="bg-white p-5 flex-1 flex flex-col justify-center items-center">
+        <div className="loader-big" />
+        <div className="text-lg roboto font-bold mt-3">Memuat</div>
+      </div>
+    );
+  }
   return (
     <Fragment>
       <div className="grid grid-flow-row grid-cols-1 lg:grid-cols-4 gap-3">
